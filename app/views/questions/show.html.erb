@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @question.question %>
+
+  <% if @question[:multiple_correct_answers].eql?("true")%>
+    <div class="form-check">
+      <% if (@question[:answer_a] != nil) %>
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <%= @question[:answer_a] %>
+      <% end %><br>
+      <% if (@question[:answer_b] != nil) %>
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+        <%= @question[:answer_b] %>
+      <% end %><br>
+      <% if (@question[:answer_c] != nil) %>
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+        <%= @question[:answer_c] %>
+      <% end %><br>
+      <% if (@question[:answer_d] != nil) %>
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+        <%= @question[:answer_d] %>
+      <% end %><br>
+      <% if (@question[:answer_e] != nil) %>
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+        <%= @question[:answer_e] %>
+      <% end %><br>
+      <% if (@question[:answer_f] != nil) %>
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
+        <%= @question[:answer_f] %>
+      <% end %><br>
+    </div>
+
+  <% else %>
+    <div class="form-check">
+      <% if (@question[:answer_a] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_a" value="answer_a">
+        <%= @question[:answer_a] %>
+      <% end %><br>
+      <% if (@question[:answer_b] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_b" value="answer_b">
+        <%= @question[:answer_b] %>
+      <% end %><br>
+      <% if (@question[:answer_c] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_c" value="answer_c">
+        <%= @question[:answer_c] %>
+      <% end %><br>
+      <% if (@question[:answer_d] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_d" value="answer_d">
+        <%= @question[:answer_d] %>
+      <% end %><br>
+      <% if (@question[:answer_e] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_e" value="answer_e">
+        <%= @question[:answer_e] %>
+      <% end %><br>
+      <% if (@question[:answer_f] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_f" value="answer_f">
+        <%= @question[:answer_f] %>
+      <% end %><br>
+    </div>
+  <% end %>
+</p>
+<button type="submit" class="btn btn-primary">Submit</button>
+
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
+
