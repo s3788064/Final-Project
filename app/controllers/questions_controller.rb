@@ -177,7 +177,7 @@ class QuestionsController < ApplicationController
     end
 
     def set_quiz
-      @random = Question.all.shuffle.first
+      @random = Question.all.shuffle
     end
 
 end
