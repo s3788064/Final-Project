@@ -11,6 +11,14 @@ Rails.application.routes.draw do
 
   get '/question4', to: "questions#question4"
 
+  get '/question5', to: "questions#question5"
+
+  get '/question6', to: "questions#question6"
+
+  get '/question7', to: "questions#question7"
+
+  get '/question8', to: "questions#question8"
+
   get '/results', to: "questions#results"
 
   post '/answer', to: "questions#answer"

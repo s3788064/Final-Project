@@ -4,5 +4,9 @@
   You scored: <%= @correct %>/<%= @total %>
   <br>
 
+  <% @a = session[:attempts] %>
+  <% @a.each do |a| %>
+    On <%= a[0] %> you scored <%=a[1]%>/<%=a[2]%>.<br>
+  <% end %>
   <%= link_to 'Go Again?', '/question1'%>
 </p>
