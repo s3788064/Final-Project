@@ -3,12 +3,77 @@ class QuestionsController < ApplicationController
   before_action :set_random
 
   def question1
-    correct = 0;
     @question = @random[0]
+    session[:answered].clear()
   end
 
   def question2
-    params[:id]
+    @question = @random[1]
+  end
+
+  def question3
+    @question = @random[2]
+  end
+
+  def question4
+    @question = @random[3]
+  end
+
+  def results
+    session[:attempts] ||=[]
+
+    @correct = 0;
+    @total = session[:answered].length()
+    @questionsanswered = session[:answered]
+
+    @questionsanswered.each do |check|
+      if check[1].eql?(true)
+        @correct += 1
+      end
+    end
+
+    @previousattempts = session[:attempts]
+
+    time = Time.now
+    time = time.strftime("%H:%M %d-%m-%Y")
+
+    session[:attempts].push(time, @correct)
+
+  end
+
+  def answer
+    session[:answered] ||= []
+
+    @question = Question.all.find_by(:question_id => params[:qid])
+    @answer = params[:singleAnswer]
+
+    if(@answer.eql?("answer_a") && @question.answer_a_correct.eql?("true"))
+      result = true
+    elsif(@answer.eql?("answer_b") && @question.answer_b_correct.eql?("true"))
+      result = true
+    elsif(@answer.eql?("answer_c") && @question.answer_c_correct.eql?("true"))
+      result = true
+    elsif(@answer.eql?("answer_d") && @question.answer_d_correct.eql?("true"))
+      result = true
+    elsif(@answer.eql?("answer_e") && @question.answer_e_correct.eql?("true"))
+      result = true
+    elsif(@answer.eql?("answer_f") && @question.answer_f_correct.eql?("true"))
+      result = true
+    else
+      result = false
+    end
+
+    session[:answered].push([params[:qid], result])
+
+    if(session[:answered].length() == 1)
+      redirect_to '/question2'
+    elsif(session[:answered].length() == 2)
+      redirect_to '/question3'
+    elsif(session[:answered].length() == 3)
+      redirect_to '/question4'
+    else
+      redirect_to '/results'
+    end
   end
 
   # GET /questions or /questions.json

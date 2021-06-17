@@ -1,2 +1,36 @@
 <p>
   <h1>Question 2:</h1>
+  <%= @question.question %>
+
+  <%= form_tag '/answer' do |form| %>
+  <%= hidden_field_tag 'qid', @question.question_id %>
+  <%= hidden_field_tag '', @question.question_id %>
+    <div class="form-check" action="/question2">
+      <% if (@question[:answer_a] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_a" value="answer_a">
+        <%= @question[:answer_a] %>
+      <% end %><br>
+      <% if (@question[:answer_b] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_b" value="answer_b">
+        <%= @question[:answer_b] %>
+      <% end %><br>
+      <% if (@question[:answer_c] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_c" value="answer_c">
+        <%= @question[:answer_c] %>
+      <% end %><br>
+      <% if (@question[:answer_d] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_d" value="answer_d">
+        <%= @question[:answer_d] %>
+      <% end %><br>
+      <% if (@question[:answer_e] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_e" value="answer_e">
+        <%= @question[:answer_e] %>
+      <% end %><br>
+      <% if (@question[:answer_f] != nil) %>
+      <input class="form-check-input" type="radio" name="singleAnswer" id="radio_f" value="answer_f">
+        <%= @question[:answer_f] %>
+      <% end %><br>
+    </div>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+<% end %>
+</p>

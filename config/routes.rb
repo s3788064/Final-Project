@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   get '/question2', to: "questions#question2"
 
+  get '/question3', to: "questions#question3"
+
+  get '/question4', to: "questions#question4"
+
+  get '/results', to: "questions#results"
+
   post '/answer', to: "questions#answer"
 
   get 'static_pages/home'
